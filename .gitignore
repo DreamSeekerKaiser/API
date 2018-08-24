@@ -1,3 +1,8 @@
-/.buildpath
-/.project
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+.env
 /.settings/
+/.project
+/.buildpath

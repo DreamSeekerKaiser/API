@@ -1,30 +1,28 @@
 <?php
 
-declare(strict_types=1);
+/*
+|--------------------------------------------------------------------------
+| Create The Application
+|--------------------------------------------------------------------------
+|
+| First we need to get an application instance. This creates an instance
+| of the application / container and bootstraps the application so it
+| is ready to receive HTTP / Console requests from the environment.
+|
+*/
 
-// Delegate static file requests back to the PHP built-in webserver
-if (PHP_SAPI === 'cli-server' && $_SERVER['SCRIPT_FILENAME'] !== __FILE__) {
-    return false;
-}
+$app = require __DIR__.'/../bootstrap/app.php';
 
-chdir(dirname(__DIR__));
-require 'vendor/autoload.php';
+/*
+|--------------------------------------------------------------------------
+| Run The Application
+|--------------------------------------------------------------------------
+|
+| Once we have the application, we can handle the incoming request
+| through the kernel, and send the associated response back to
+| the client's browser allowing them to enjoy the creative
+| and wonderful application we have prepared for them.
+|
+*/
 
-/**
- * Self-called anonymous function that creates its own scope and keep the global namespace clean.
- */
-(function () {
-    /** @var \Psr\Container\ContainerInterface $container */
-    $container = require 'config/container.php';
-
-    /** @var \Zend\Expressive\Application $app */
-    $app = $container->get(\Zend\Expressive\Application::class);
-    $factory = $container->get(\Zend\Expressive\MiddlewareFactory::class);
-
-    // Execute programmatic/declarative middleware pipeline and routing
-    // configuration statements
-    (require 'config/pipeline.php')($app, $factory, $container);
-    (require 'config/routes.php')($app, $factory, $container);
-
-    $app->run();
-})();
+$app->run();
