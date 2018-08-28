@@ -1,4 +1,6 @@
 <?php
+use Tymon\JWTAuth\Providers\LumenServiceProvider;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 try {

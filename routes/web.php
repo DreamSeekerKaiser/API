@@ -16,9 +16,3 @@ $router->get('/', [
         return $router->app->version();
     }
 ]);
-$router->post('/auth/login', 'AuthController@postLogin');
-$router->group([
-    'middleware' => 'auth:api'
-], function ($router) {
-    $router->get('/test', 'ExampleController@getUser');
-});

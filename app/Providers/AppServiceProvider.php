@@ -1,11 +1,11 @@
 <?php
-
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Tymon\JWTAuth\Providers\LumenServiceProvider;
+
 class AppServiceProvider extends ServiceProvider
 {
+
     /**
      * Register any application services.
      *
@@ -14,6 +14,5 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
-        $this->app->register(LumenServiceProvider::class);
     }
 }
